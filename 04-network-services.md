@@ -1,7 +1,5 @@
 # Network Services
 
-DNS, ARP, DHCP, FHRP, HSRP를 정리한 문서입니다.
-
 DNS (Domain Name System)
 FQDN(Fully Qualified Domain Name)을 IP 주소로 변환하는 시스템
 
@@ -11,6 +9,7 @@ ARP Request는 Layer 2 broadcast이다 -> broadcast는 라우터를 넘어가지
 따라서 다른 subnet으로 통신할 때는 default gateway(라우터)의 MAC주소를 ARP로 찾는다
 
 DNS를 통해 FQDN을 IP 주소로 변환하는 과정
+
 1. 웹사이트 이름 입력
 2. Host가 DNS Server에 IP 주소 물어봄
 3. 다른 subnet이면 Router를 거쳐 감
@@ -20,6 +19,7 @@ DNS를 통해 FQDN을 IP 주소로 변환하는 과정
 7. 이제 실제 웹 요청 시작 가능
 
 DNS로 목적지 IP를 알아낸 뒤, 실제 HTTP 웹 트래픽이 Host A에서 Web Server까지 이동하는 과정
+
 1. Host A가 DNS로 Web Server IP를 알아냄
 2. Host A가 HTTP 요청 생성
 3. 목적지가 다른 subnet이므로 Router A로 보냄

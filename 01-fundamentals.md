@@ -1,7 +1,5 @@
 # Network Fundamentals
 
-OSI 7계층, TCP/IP 모델, PDU, Transport Layer, Physical Layer를 정리한 문서입니다.
-
 OSI 7계층
 | 계층 | 이름 | 주요 내용 |
 | --- | --- | --- |
@@ -13,12 +11,12 @@ OSI 7계층
 | Layer 2 | Data Link | MAC 주소, 스위치 |
 | Layer 1 | Physical | 실제 전송 매체, 케이블 등 |
 
-| TCP/IP 계층 | OSI 모델과의 관계 |
-| --- | --- |
+| TCP/IP 계층       | OSI 모델과의 관계                                    |
+| ----------------- | ---------------------------------------------------- |
 | Application Layer | OSI의 Application, Presentation, Session 계층에 해당 |
-| Transport Layer | OSI의 Transport 계층에 해당 |
-| Internet Layer | OSI의 Network 계층에 해당 |
-| Link Layer | OSI의 Data Link, Physical 계층에 해당 |
+| Transport Layer   | OSI의 Transport 계층에 해당                          |
+| Internet Layer    | OSI의 Network 계층에 해당                            |
+| Link Layer        | OSI의 Data Link, Physical 계층에 해당                |
 
 PDU(Protocol Data Unit)
 | 계층 | 데이터 단위 이름 |
@@ -28,12 +26,12 @@ PDU(Protocol Data Unit)
 | Internet / Network Layer | Packet |
 | Link / Data Link Layer | Frame |
 
-| 계층 | 이름 |
-| --- | --- |
-| Layer 7~5 | Data |
-| Layer 4 | Segment |
-| Layer 3 | Packet |
-| Layer 2 | Frame |
+| 계층      | 이름    |
+| --------- | ------- |
+| Layer 7~5 | Data    |
+| Layer 4   | Segment |
+| Layer 3   | Packet  |
+| Layer 2   | Frame   |
 
 Transport Layer
 Transport Layer는 호스트 간 데이터 전송을 관리하는 계층

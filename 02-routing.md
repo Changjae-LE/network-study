@@ -1,7 +1,5 @@
 # Routing
 
-Network Layer, Routing Table, IGP/EGP, RIP, EIGRP, OSPF를 정리한 문서입니다.
-
 Network Layer
 Layer 3, Network Layer는 패킷을 목적지까지 보내기 위한 라우팅을 담당
 | 프로토콜 | 설명 |
@@ -95,6 +93,7 @@ Routing Protocol이 활성화된 인터페이스의 동작
 라우터의 route 선택 순서(기준)
 라우터가 패킷을 전달할 때는 목적지 IP 주소를 보고 routing table에서 가장 적절한 route를 찾습니다.
 선택 기준은 다음 순서입니다.
+
 1. Longest Prefix Match
 2. Administrative Distance
 3. Metric
@@ -113,6 +112,7 @@ RIP의 특징
 EIGRP(Enhanced Interior Gateway Routing Protocol)
 IGRP의 발전된 형태이며, RIP보다 훨씬 빠르고 큰 네트워크에서도 사용할 수 있는 라우팅 프로토콜
 EIGRP의 주요 특징
+
 - RIP보다 convergence time이 빠름
 - 네트워크 변화가 생겼을 때 관련된 라우터에게만 업데이트를 보내는 bounded update 지원
 - 브로드캐스트가 아니라 멀티캐스트를 사용해 EIGRP 라우터끼리만 메시지 처리

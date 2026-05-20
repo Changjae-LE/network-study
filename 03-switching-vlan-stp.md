@@ -1,7 +1,5 @@
 # Switching, VLAN, and STP
 
-Data-Link Layer, LAN 구조, VLAN, Trunk, STP, EtherChannel, CAM/Flooding을 정리한 문서입니다.
-
 Data-Link Layer
 Layer 2, Data-Link Layer는 데이터를 실제 물리 계층으로 보내기 전에 frame 형태로 만들고, 물리 계층에서 온 bit들을 다시 해석하는 역할, Ethernet이 가장 많이 사용됨
 
@@ -32,15 +30,15 @@ LAN
 | Distribution Layer | Access switch 집약 | redundancy 구성, QoS 등 소프트웨어 정책 적용 |
 | Core Layer | 건물/영역 간 연결 | 속도와 안정성 중심, 소프트웨어 정책 최소화 |
 
-| 구분 | 전통적 Campus LAN | Spine-Leaf |
-| --- | --- | --- |
-| 계층 | Access / Distribution / Core | Leaf / Spine |
-| 주 사용 환경 | 일반 사무실, 학교, 캠퍼스 LAN | 데이터센터 |
-| 서버 연결 위치 | Access Layer | Leaf Layer |
-| 중심 계층 | Core Layer | Spine Layer |
-| 주요 트래픽 | North-South | East-West |
-| 확장 방식 | 계층별 확장 | Spine 또는 Leaf 추가 |
-| 특징 | 사용자 중심 네트워크에 적합 | 서버 간 통신에 적합 |
+| 구분           | 전통적 Campus LAN             | Spine-Leaf           |
+| -------------- | ----------------------------- | -------------------- |
+| 계층           | Access / Distribution / Core  | Leaf / Spine         |
+| 주 사용 환경   | 일반 사무실, 학교, 캠퍼스 LAN | 데이터센터           |
+| 서버 연결 위치 | Access Layer                  | Leaf Layer           |
+| 중심 계층      | Core Layer                    | Spine Layer          |
+| 주요 트래픽    | North-South                   | East-West            |
+| 확장 방식      | 계층별 확장                   | Spine 또는 Leaf 추가 |
+| 특징           | 사용자 중심 네트워크에 적합   | 서버 간 통신에 적합  |
 
 VLAN이란?
 VLAN = Virtual Local Area Network

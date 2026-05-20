@@ -1,7 +1,5 @@
 # Troubleshooting Commands
 
-계층별 네트워크 troubleshooting 명령어를 정리한 문서입니다.
-
 계층별 troubleshooting 명령어
 | 계층 | 명령어 / 도구 | 용도 |
 | --- | --- | --- |

@@ -1,7 +1,5 @@
 # QoS
 
-QoS의 개념, traffic classification/marking, congestion management를 정리한 문서입니다.
-
 QoS(Quality of Service)
 : 네트워크에서 중요한 트래픽에 더 좋은 서비스를 제공하는 기술
 traffic classification/marking 방식

@@ -1,7 +1,5 @@
 # Network Security
 
-Switch Security, DHCP Snooping, DAI, 802.1X, Port Security를 정리한 문서입니다.
-
 Switch Security
 DHCP Snooping
 : 가짜 DHCP 서버(Rogue DHCP Server)가 클라이언트에게 잘못된 IP 설정을 주는 것을 막는 스위치 보안 기능
@@ -45,6 +43,7 @@ Switch Port Security
 
 MAC learning function
 스위치가 어떤 MAC 주소가 어느 포트에 연결되어 있는지 자동으로 학습하는 기능
+
 - 스위치는 프레임의 출발지 MAC 주소를 보고,
 - 그 MAC 주소가 들어온 포트와 연결되어 있다는 것을
 - MAC 주소 테이블 또는 CAM 테이블에 저장한다.
