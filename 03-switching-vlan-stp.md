@@ -52,6 +52,10 @@ VLAN이 필요한 이유
 | 보안 문제 | broadcast traffic이 router/firewall의 Layer 3 보안 정책을 우회할 수 있음 |
 | 대역폭 낭비 | 필요 없는 링크와 스위치까지 traffic이 퍼짐 |
 
+VTP = VLAN Trunking Protocol
+VTP는 Cisco 스위치들 사이에서 VLAN 정보를 관리하고 전파하는 Cisco 전용 프로토콜.
+여러 스위치가 있는 환경에서 하나의 스위치에 VLAN을 생성하면, 같은 VTP domain에 있는 다른 스위치들에게 VLAN 정보를 전달 가능.
+
 Access Port와 Trunk Port 차이
 | 구분 | Access Port | Trunk Port |
 | --- | --- | --- |
@@ -83,6 +87,50 @@ Router on a Stick은 라우터의 하나의 물리 인터페이스를 사용해�
 Spanning Tree Protocol(STP)
 Layer 2 스위치 네트워크에서 루프를 방지하는 기술
 Layer 2에는 TTL이 없기 때문에 Layer 2 loop가 발생하면 프레임이 계속 순환할 수 있다. 이를 방지하기 위해 Spanning Tree Protocol(STP)을 사용한다.
+
+STP 선출 기준
+| 순서 | 기준 |
+| --- | --- |
+| 1 | 가장 낮은 Root Bridge ID |
+| 2 | 가장 낮은 Root Path Cost |
+| 3 | 가장 낮은 Sender Bridge ID |
+| 4 | 가장 낮은 Port ID |
+
+- STP에서는 낮은 값이 더 우선순위가 높다.
+- Root Bridge는 가장 낮은 Bridge ID를 가진 스위치가 된다.
+
+Bridge ID
+| 구성 요소 | 설명 |
+| --- | --- |
+| Bridge Priority | 관리자가 조정 가능한 우선순위 값 |
+| MAC Address | 스위치의 MAC 주소 |
+| Bridge ID | Bridge Priority + MAC Address |
+
+- Bridge ID가 가장 낮은 스위치가 Root Bridge가 된다.
+- 기본 Bridge Priority는 보통 32768이다.
+
+STP Port 종류
+| 포트 | 설명 |
+| --- | --- |
+| Root Port | Non-root switch에서 Root Bridge로 가는 최적 경로 포트 |
+| Designated Port | 각 세그먼트에서 Forwarding 역할을 하는 포트 |
+| Non-designated Port | Loop 방지를 위해 Blocking되는 포트 |
+
+- Root Bridge가 아닌 스위치는 Root Port를 하나 가진다.
+- 각 세그먼트에는 Designated Port가 하나 있다.
+- Root Port와 Designated Port가 아닌 포트는 Blocking될 수 있다.
+
+STP Port 상태
+| 상태 | 설명 |
+| --- | --- |
+| Disabled | 포트가 꺼진 상태 |
+| Blocking | 데이터 전송 안 함, BPDU만 수신 |
+| Listening | STP 계산 중 |
+| Learning | MAC 주소 학습 |
+| Forwarding | 데이터 프레임 전송 가능 |
+
+- Forwarding 상태가 되어야 실제 데이터 통신이 가능하다.
+- Blocking 상태에서는 일반 데이터 프레임을 전달하지 않는다.
 
 PortFast
 PortFast는 루프 가능성이 거의 없는 end host 포트를 STP 대기 시간 없이 즉시 forwarding 상태로 만드는 기능입니다
@@ -120,5 +168,9 @@ Spanning Tree의 단점
 
 CAM(Content Addressable Memory)
 스위치가 “어떤 MAC 주소가 어느 포트에 연결되어 있는지” 기억해두는 표, MAC address table이라고도 불려짐
+
+MAC Learning Function
+스위치는 프레임을 수신하면 먼저 출발지 MAC 주소를 확인함.
+만약 그 출발지 MAC 주소가 CAM table에 없으면, 스위치는 해당 MAC 주소와 프레임이 들어온 포트를 CAM table에 저장함.
 
 Flooding은 스위치가 프레임의 목적지 MAC 주소를 CAM table에서 찾지 못했을 때, 그 프레임을 받은 포트를 제외한 모든 포트로 뿌리는 과정

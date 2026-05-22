@@ -19,12 +19,12 @@ OSI 계층별 대표 장비 / 주소
 | Layer 2 | MAC Address | Switch, Bridge |
 | Layer 1 | Bit / Signal | Cable, Hub, Repeater |
 
-| TCP/IP 계층       | OSI 모델과의 관계                                    |
-| ----------------- | ---------------------------------------------------- |
-| Application Layer | OSI의 Application, Presentation, Session 계층에 해당 |
-| Transport Layer   | OSI의 Transport 계층에 해당                          |
-| Internet Layer    | OSI의 Network 계층에 해당                            |
-| Link Layer        | OSI의 Data Link, Physical 계층에 해당                |
+| TCP/IP 계층       | OSI 모델과의 관계                              |
+| ----------------- | ---------------------------------------------- |
+| Application Layer | Application, Presentation, Session 계층에 해당 |
+| Transport Layer   | Transport 계층에 해당                          |
+| Internet Layer    | Network 계층에 해당                            |
+| Link Layer        | Data Link, Physical 계층에 해당                |
 
 TCP/IP 핵심
 | 개념 | 설명 |
@@ -34,15 +34,7 @@ TCP/IP 핵심
 | UDP | 빠르지만 신뢰성 보장이 없는 비연결형 통신 |
 | IP | 목적지까지 Packet을 전달하기 위한 주소 체계 |
 
-PDU(Protocol Data Unit)
-| 계층 | 데이터 단위 이름 |
-| --- | --- |
-| Application Layer | Data |
-| Transport Layer | Segment |
-| Internet / Network Layer | Packet |
-| Link / Data Link Layer | Frame |
-
-## PDU & Encapsulation
+PDU(Protocol Data Unit) & Encapsulation
 
 | OSI 계층  | PDU 이름 | Encapsulation 과정                   |
 | --------- | -------- | ------------------------------------ |
@@ -57,7 +49,6 @@ PDU(Protocol Data Unit)
 - Encapsulation은 송신자가 위 계층에서 아래 계층으로 내려가며 헤더를 붙이는 과정이다.
 - Decapsulation은 수신자가 아래 계층에서 위 계층으로 올라가며 헤더를 제거하는 과정이다.
 
-Transport Layer
 Transport Layer는 호스트 간 데이터 전송을 관리하는 계층
 | 역할 | 설명 |
 | --- | --- |
@@ -67,7 +58,6 @@ Transport Layer는 호스트 간 데이터 전송을 관리하는 계층
 | Session multiplexing | 여러 통신 세션을 동시에 구분하고 관리 |
 | Port number 사용 | 어떤 애플리케이션으로 보낼 데이터인지 구분 |
 
-Physical Layer
 Layer 1, Physical Layer는 실제 데이터를 bitstream, 즉 0과 1의 비트 형태로 물리 매체에 실어 보내는 계층
 
 Ethernet / Cable
@@ -113,17 +103,12 @@ MAC Address
 - Switch는 MAC Address Table을 사용한다.
 - MAC Address는 같은 LAN 안에서 통신할 때 사용된다.
 
-Traffic Types
-| 방식 | 설명 |
-| --- | --- |
-| Unicast | 하나의 목적지에게 전송 |
-| Broadcast | 같은 네트워크의 모든 장비에게 전송 |
-| Multicast | 특정 그룹에게 전송 |
-
-Broadcast MAC Address:
-FFFF.FFFF.FFFF
-
-핵심:
+| 구분            | 목적지 MAC       | 스위치 동작                                                  |
+| --------------- | ---------------- | ------------------------------------------------------------ |
+| Known Unicast   | 특정 MAC         | MAC Address Table을 보고 해당 포트로만 Forwarding            |
+| Unknown Unicast | 특정 MAC         | 목적지 위치를 몰라 들어온 포트를 제외한 모든 포트로 Flooding |
+| Broadcast       | `FFFF.FFFF.FFFF` | 같은 VLAN 안에서 들어온 포트를 제외한 모든 포트로 Flooding   |
+| Multicast       | 특정 그룹 MAC    | 설정에 따라 Flooding 또는 그룹 포트로 전달                   |
 
 - ARP는 Broadcast를 사용한다.
 - Switch는 Broadcast를 같은 VLAN 안의 모든 포트로 전달한다.
