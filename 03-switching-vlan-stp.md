@@ -1,7 +1,8 @@
 # Switching, VLAN, and STP
 
 Data-Link Layer
-Layer 2, Data-Link Layer는 데이터를 실제 물리 계층으로 보내기 전에 frame 형태로 만들고, 물리 계층에서 온 bit들을 다시 해석하는 역할, Ethernet이 가장 많이 사용됨
+
+- Layer 2, Data-Link Layer는 데이터를 실제 물리 계층으로 보내기 전에 frame 형태로 만들고, 물리 계층에서 온 bit들을 다시 해석하는 역할, Ethernet이 가장 많이 사용됨
 
 Ethernet Header 구성
 | 필드 | 설명 |
@@ -40,10 +41,10 @@ LAN
 | 확장 방식      | 계층별 확장                   | Spine 또는 Leaf 추가 |
 | 특징           | 사용자 중심 네트워크에 적합   | 서버 간 통신에 적합  |
 
-VLAN이란?
-VLAN = Virtual Local Area Network
-VLAN은 switch에서 사용하는 Layer 2 기능입니다.
-VLAN의 핵심 역할은 LAN을 여러 개의 분리된 broadcast domain으로 나누는 것
+VLAN(Virtual Local Area Network)이란?
+
+- VLAN은 switch에서 사용하는 Layer 2 기능임.
+- VLAN의 핵심 역할은 LAN을 여러 개의 분리된 broadcast domain으로 나누는 것
 
 VLAN이 필요한 이유
 | 문제 | 설명 |
@@ -53,8 +54,9 @@ VLAN이 필요한 이유
 | 대역폭 낭비 | 필요 없는 링크와 스위치까지 traffic이 퍼짐 |
 
 VTP = VLAN Trunking Protocol
-VTP는 Cisco 스위치들 사이에서 VLAN 정보를 관리하고 전파하는 Cisco 전용 프로토콜.
-여러 스위치가 있는 환경에서 하나의 스위치에 VLAN을 생성하면, 같은 VTP domain에 있는 다른 스위치들에게 VLAN 정보를 전달 가능.
+
+- VTP는 Cisco 스위치들 사이에서 VLAN 정보를 관리하고 전파하는 Cisco 전용 프로토콜.
+- 여러 스위치가 있는 환경에서 하나의 스위치에 VLAN을 생성하면, 같은 VTP domain에 있는 다른 스위치들에게 VLAN 정보를 전달 가능.
 
 Access Port와 Trunk Port 차이
 | 구분 | Access Port | Trunk Port |
@@ -65,7 +67,9 @@ Access Port와 Trunk Port 차이
 | 예시 | PC가 연결된 포트 | Switch1 ↔ Switch2 연결 포트 |
 
 DTP = Dynamic Trunking Protocol
-Cisco 스위치끼리 연결되었을 때, 두 스위치 포트가 자동으로 trunk가 될지 협상하는 Cisco 전용 프로토콜
+
+- Cisco 스위치끼리 연결되었을 때, 두 스위치 포트가 자동으로 trunk가 될지 협상하는 Cisco 전용 프로토콜
+
 DTP 모드
 | 설정 | 의미 |
 | --- | --- |
@@ -76,17 +80,21 @@ DTP 모드
 | switchport nonegotiate | DTP 비활성화 |
 
 Inter-VLAN Routing 방식 1: Router Separate Interfaces
-일반적으로 LAN에서는 하나의 VLAN이 하나의 IP subnet과 1:1로 연결됨
+
+- 일반적으로 LAN에서는 하나의 VLAN이 하나의 IP subnet과 1:1로 연결됨
 
 Router Separate Interfaces 방식
-이 방식은 라우터의 물리 인터페이스를 VLAN마다 하나씩 사용하는 구조
+
+- 이 방식은 라우터의 물리 인터페이스를 VLAN마다 하나씩 사용하는 구조
 
 Router on a Stick이란?
-Router on a Stick은 라우터의 하나의 물리 인터페이스를 사용해서 여러 VLAN 간 라우팅을 처리하는 방식
+
+- Router on a Stick은 라우터의 하나의 물리 인터페이스를 사용해서 여러 VLAN 간 라우팅을 처리하는 방식
 
 Spanning Tree Protocol(STP)
-Layer 2 스위치 네트워크에서 루프를 방지하는 기술
-Layer 2에는 TTL이 없기 때문에 Layer 2 loop가 발생하면 프레임이 계속 순환할 수 있다. 이를 방지하기 위해 Spanning Tree Protocol(STP)을 사용한다.
+
+- Layer 2 스위치 네트워크에서 루프를 방지하는 기술
+- Layer 2에는 TTL이 없기 때문에 Layer 2 loop가 발생하면 프레임이 계속 순환할 수 있다. 이를 방지하기 위해 Spanning Tree Protocol(STP)을 사용한다.
 
 STP 선출 기준
 | 순서 | 기준 |
@@ -129,17 +137,16 @@ STP Port 상태
 | Learning | MAC 주소 학습 |
 | Forwarding | 데이터 프레임 전송 가능 |
 
-- Forwarding 상태가 되어야 실제 데이터 통신이 가능하다.
-- Blocking 상태에서는 일반 데이터 프레임을 전달하지 않는다.
-
 PortFast
 PortFast는 루프 가능성이 거의 없는 end host 포트를 STP 대기 시간 없이 즉시 forwarding 상태로 만드는 기능입니다
 
 BPDU Guard
-스위치는 Spanning Tree 정보를 담은 BPDU를 전송합니다. 일반 PC는 BPDU를 보내지 않습니다. 따라서 PortFast 포트에서 BPDU가 수신되면, “아 이 포트에 스위치가 연결됐구나”라고 판단하고 해당 포트를 즉시 error-disabled 상태로 shut down합니다.
+
+- 스위치는 Spanning Tree 정보를 담은 BPDU를 전송합니다. - 일반 PC는 BPDU를 보내지 않습니다. 따라서 PortFast 포트에서 BPDU가 수신되면, “아 이 포트에 스위치가 연결됐구나”라고 판단하고 해당 포트를 즉시 error-disabled 상태로 shut down합니다.
 
 Root Guard
-의도하지 않은 스위치가 Spanning Tree의 Root Bridge가 되는 것을 막기 위해 Root Guard를 사용. Root Guard가 설정된 포트에서 현재 Root Bridge보다 더 우수한 BPDU를 받으면, 그 포트는 root-inconsistent 상태가 되고 트래픽을 전달하지 않음.
+
+- 의도하지 않은 스위치가 Spanning Tree의 Root Bridge가 되는 것을 막기 위해 Root Guard를 사용. Root Guard가 설정된 포트에서 현재 Root Bridge보다 더 우수한 BPDU를 받으면, 그 포트는 root-inconsistent 상태가 되고 트래픽을 전달하지 않음.
 
 Spanning Tree BPDU Filter
 BPDU Guard와 BPDU Filter 차이
@@ -147,13 +154,18 @@ BPDU Guard와 BPDU Filter 차이
 | --- | --- |
 | BPDU Guard | PortFast 포트에서 BPDU를 받으면 포트를 error-disabled 상태로 shutdown |
 | BPDU Filter | BPDU를 보내지 않거나, 들어오는 BPDU를 무시함 |
-BPDU Filter는 BPDU를 차단하거나 무시하는 기능이지만, 잘못 사용하면 Spanning Tree 보호 기능을 꺼버리는 것과 비슷해져서, 일반적으로 BPDU Filter는 권장되지 않음
+
+BPDU Filter
+
+- BPDU를 차단하거나 무시하는 기능이지만, 잘못 사용하면 Spanning Tree 보호 기능을 꺼버리는 것과 비슷해져서, 일반적으로 BPDU Filter는 권장되지 않음
 
 Spanning Tree Loop Guard
-Cisco의 Spanning Tree 기능 중 하나로, 주 목적은 Unidirectional Link, 즉 단방향 링크 장애로 인한 Layer 2 loop를 막는 기능
+
+- Cisco의 Spanning Tree 기능 중 하나로, 주 목적은 Unidirectional Link, 즉 단방향 링크 장애로 인한 Layer 2 loop를 막는 기능
 
 EtherChannel
-: 여러 개의 물리적 링크를 하나의 논리적 링크처럼 묶는 기술
+
+- 여러 개의 물리적 링크를 하나의 논리적 링크처럼 묶는 기술
 
 EtherChannel을 구성하는 방법
 | 방식 | 설명 |
@@ -163,14 +175,19 @@ EtherChannel을 구성하는 방법
 | Static | 협상 없이 수동으로 EtherChannel을 구성하는 방식 |
 
 Spanning Tree의 단점
-일부 링크를 blocking 상태로 만들어 전체 대역폭을 다 쓰지 못할 수 있음
-장애 발생 후 복구가 느릴 수 있음
+
+- 일부 링크를 blocking 상태로 만들어 전체 대역폭을 다 쓰지 못할 수 있음
+- 장애 발생 후 복구가 느릴 수 있음
 
 CAM(Content Addressable Memory)
-스위치가 “어떤 MAC 주소가 어느 포트에 연결되어 있는지” 기억해두는 표, MAC address table이라고도 불려짐
+
+- 스위치가 “어떤 MAC 주소가 어느 포트에 연결되어 있는지” 기억해두는 표, MAC address table이라고도 불려짐
 
 MAC Learning Function
-스위치는 프레임을 수신하면 먼저 출발지 MAC 주소를 확인함.
-만약 그 출발지 MAC 주소가 CAM table에 없으면, 스위치는 해당 MAC 주소와 프레임이 들어온 포트를 CAM table에 저장함.
 
-Flooding은 스위치가 프레임의 목적지 MAC 주소를 CAM table에서 찾지 못했을 때, 그 프레임을 받은 포트를 제외한 모든 포트로 뿌리는 과정
+- 스위치는 프레임을 수신하면 먼저 출발지 MAC 주소를 확인함.
+- 만약 그 출발지 MAC 주소가 CAM table에 없으면, 스위치는 해당 MAC 주소와 프레임이 들어온 포트를 CAM table에 저장함.
+
+Flooding
+
+- 스위치가 프레임의 목적지 MAC 주소를 CAM table에서 찾지 못했을 때, 그 프레임을 받은 포트를 제외한 모든 포트로 뿌리는 과정
