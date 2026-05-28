@@ -94,7 +94,7 @@ Routing Protocol이 활성화된 인터페이스의 동작
 라우터가 패킷을 전달할 때는 목적지 IP 주소를 보고 routing table에서 가장 적절한 route를 찾습니다.
 선택 기준은 다음 순서입니다.
 
-1. Longest Prefix Match
+1. Longest Prefix
 2. Administrative Distance
 3. Metric
 
@@ -129,3 +129,7 @@ OSPF Packet Types
 | LSA | Link State Advertisement | 링크 상태 정보 전달 |
 | LSU | Link State Update | 여러 LSA를 담아 업데이트 전달 |
 | LSAck | Link State Acknowledgement | 받은 메시지에 대한 확인 응답 |
+
+advertise
+
+- 네트워크에서는 라우팅 정보를 외부에 알리다 / 전파하다

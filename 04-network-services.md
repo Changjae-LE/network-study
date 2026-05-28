@@ -51,3 +51,29 @@ HSRP에서는 priority로 Active Router를 정하고, preemption으로 복구된
 
 Layer 3에서는 루프 방지와 장애 조치
 주로 라우팅과 HSRP가 경로 선택과 자동 장애 조치를 담당
+
+## WLC and LAG
+
+- WLC는 Wireless LAN Controller로, 여러 무선 AP를 중앙에서 관리하는 장비이다.
+- LAG는 Link Aggregation으로, 여러 물리 포트를 하나의 논리 링크처럼 묶어 사용하는 방식이다.
+- WLC에서 LAG를 사용하면 AP-manager interface는 하나만 사용된다.
+
+| 개념                 | 설명                                            |
+| -------------------- | ----------------------------------------------- |
+| WLC                  | 무선 AP들을 중앙에서 관리하는 컨트롤러          |
+| LAG                  | 여러 물리 링크를 하나의 논리 링크처럼 묶는 방식 |
+| AP-manager interface | AP와 WLC 간 CAPWAP 연결에 사용되는 인터페이스   |
+| WLC + LAG            | AP-manager interface가 하나로 제한됨            |
+
+Lightweight AP
+
+- WLC를 통해 중앙에서 관리되는 AP
+
+Lightweight AP 관리 방식
+
+- Lightweight AP는 WLC에서 관리함.
+- 안전하게 관리하려면 WLC GUI에 `HTTPS`로 접속해야 함.
+
+DHCP Default Gateway 설정
+
+- DHCP pool에서 클라이언트에게 기본 게이트웨이를 알려줄 때는 default-router 명령어를 사용.

@@ -42,3 +42,12 @@ Cisco 네트워크 장비들을 중앙에서 관리하고 자동화하는 컨트
 - 네트워크 상태 모니터링
 - 보안 정책 적용
 - 장비 프로비저닝
+
+Basic Network Verification Commands
+
+| 목적                           | 명령어                 | 사용 환경     |
+| ------------------------------ | ---------------------- | ------------- |
+| Windows에서 IP/DNS 확인        | ipconfig /all          | Windows       |
+| Cisco 장비 인터페이스 확인     | show interface         | Cisco IOS     |
+| Linux 네트워크 인터페이스 확인 | ifconfig -a or ip addr | Linux/Unix    |
+| 라우팅 테이블 확인             | netstat -r             | Windows/Linux |

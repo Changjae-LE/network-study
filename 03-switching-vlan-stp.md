@@ -46,6 +46,10 @@ VLAN(Virtual Local Area Network)이란?
 - VLAN은 switch에서 사용하는 Layer 2 기능임.
 - VLAN의 핵심 역할은 LAN을 여러 개의 분리된 broadcast domain으로 나누는 것
 
+Trunk
+
+- 여러 VLAN의 트래픽을 한 케이블로 같이 보내는 연결 방식
+
 VLAN이 필요한 이유
 | 문제 | 설명 |
 | --- | --- |
@@ -191,3 +195,16 @@ MAC Learning Function
 Flooding
 
 - 스위치가 프레임의 목적지 MAC 주소를 CAM table에서 찾지 못했을 때, 그 프레임을 받은 포트를 제외한 모든 포트로 뿌리는 과정
+
+VLAN Hopping Attack
+
+- VLAN hopping은 공격자가 자신이 속한 VLAN을 벗어나 다른 VLAN으로 트래픽을 보내려고 하는 공격.
+
+방어 방법
+
+1. Native VLAN을 사용하지 않는 VLAN ID로 변경한다.
+2. Access port에서는 trunk negotiation을 비활성화한다.
+3. 사용하지 않는 포트는 shutdown 한다.
+4. 사용자 VLAN과 native VLAN을 분리한다.
+
+Native VLAN = trunk에서 태그 없이 지나가는 VLAN
